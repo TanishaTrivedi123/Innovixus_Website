@@ -3,11 +3,11 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const mongoURL = process.env.MONGO_URL;
+const dbURL = process.env.ATLASDB_URL;
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(mongoURL, {
+    await mongoose.connect(dbURL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
