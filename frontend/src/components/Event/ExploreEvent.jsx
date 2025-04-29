@@ -6,6 +6,7 @@ import { deleteEvent, getEvent } from "../../store/EventSlice";
 import { RxCross2 } from "react-icons/rx";
 import { FaCalendarAlt, FaMicrochip, FaCode } from "react-icons/fa";
 import axios from "axios";
+
 const ExploreEvent = () => {
   const { events } = useSelector((state) => state.event);
   const dispatch = useDispatch();
@@ -110,9 +111,9 @@ const ExploreEvent = () => {
                 key={item._id}
                 ref={(el) => (cardsRef.current[index] = el)}
               >
-                <div className={styles.card_glow}></div>
+                {/* <div className={styles.card_glow}></div>
                 <div className={styles.img}>
-                  {item.image ? (
+                  {item.image.url ? (
                     <img
                       src={`https://innovixus-backend.onrender.com/${item.image.replace(
                         /\\/g,
@@ -120,6 +121,17 @@ const ExploreEvent = () => {
                       )}`}
                       alt="event"
                     />
+                  ) : (
+                    <div className={styles.no_event_img}>
+                      {techIcons[index % techIcons.length]}
+                    </div>
+                  )}
+                </div> */}
+
+                <div className={styles.card_glow}></div>
+                <div className={styles.img}>
+                  {item.image?.url ? (
+                    <img src={item.image.url} alt="event" />
                   ) : (
                     <div className={styles.no_event_img}>
                       {techIcons[index % techIcons.length]}
