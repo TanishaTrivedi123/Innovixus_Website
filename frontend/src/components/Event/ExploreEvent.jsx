@@ -28,7 +28,7 @@ const ExploreEvent = () => {
         try {
           // Send DELETE request to the backend
           const response = await axios.delete(
-            `http://localhost:8000/deleteEvent/${id}`
+            `https://innovixus-backend.onrender.com/deleteEvent/${id}`
           );
 
           if (response.data.success) {
@@ -46,7 +46,9 @@ const ExploreEvent = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/getEvent");
+        const response = await axios.get(
+          "https://innovixus-backend.onrender.com/getEvent"
+        );
         if (response.data.success) {
           dispatch(getEvent(response.data.events));
         }
@@ -112,7 +114,7 @@ const ExploreEvent = () => {
                 <div className={styles.img}>
                   {item.image ? (
                     <img
-                      src={`http://localhost:8000/${item.image.replace(
+                      src={`https://innovixus-backend.onrender.com/${item.image.replace(
                         /\\/g,
                         "/"
                       )}`}

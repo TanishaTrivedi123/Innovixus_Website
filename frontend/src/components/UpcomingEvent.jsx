@@ -15,7 +15,7 @@ const UpcomingEvent = () => {
     const fetchEvent = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/get-event-info"
+          "https://innovixus-backend.onrender.com/get-event-info"
         );
         console.log("API response:", response.data);
 
@@ -47,7 +47,7 @@ const UpcomingEvent = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:8000/deleteUpcomingEvent/${id}`
+        `https://innovixus-backend.onrender.com/deleteUpcomingEvent/${id}`
       );
 
       if (response.data.success) {

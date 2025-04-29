@@ -23,7 +23,7 @@ const AddUpcomingEvent = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/add-event-info",
+        "https://innovixus-backend.onrender.com/add-event-info",
         {
           title,
           description,

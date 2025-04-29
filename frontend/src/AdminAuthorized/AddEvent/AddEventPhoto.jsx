@@ -60,7 +60,7 @@ const AddEventPhoto = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/addevent",
+        "https://innovixus-backend.onrender.com/addevent",
         formData,
         {
           headers: {
