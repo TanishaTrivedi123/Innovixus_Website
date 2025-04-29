@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/upload");
-const EventModel = require("../models/EventSchema");
+const EventModel = require("../models/Event");
 
 router.post("/addevent", upload.single("image"), async (req, res) => {
   try {
