@@ -10,8 +10,8 @@ const eventSchema = new mongoose.Schema({
     required: true,
   },
   image: {
-    type: String,
-    required: true,
+    url: String,
+    filename: String,
   },
   createdAt: {
     type: Date,
