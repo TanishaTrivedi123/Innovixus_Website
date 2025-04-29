@@ -25,11 +25,15 @@ const EventRoute = require("./routes/EventRoute");
 const adminRoute = require("./routes/AdminRoute");
 const ContactRoute = require("./routes/ContactRoute");
 const upcomingEvent = require("./routes/AddUpcomingEventRoute");
+const getEventData = require("./routes/GetEventRoute");
+const getEventDeleteData = require("./routes/EventDeleteRoute");
 
 app.use("/", EventRoute);
 app.use("/", adminRoute);
 app.use("/", ContactRoute);
 app.use("/", upcomingEvent);
+app.use("/", getEventData);
+app.use("/", getEventDeleteData);
 
 app.listen(PORT, () => {
   console.log(`App is successfully running on port ${PORT}`);
