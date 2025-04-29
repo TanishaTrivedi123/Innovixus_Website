@@ -24,10 +24,12 @@ app.get("/", (req, res) => {
 const EventRoute = require("./routes/EventRoute");
 const adminRoute = require("./routes/AdminRoute");
 const ContactRoute = require("./routes/ContactRoute");
+const upcomingEvent = require("./routes/AddUpcomingEventRoute");
 
 app.use("/", EventRoute);
 app.use("/", adminRoute);
 app.use("/", ContactRoute);
+app.use("/", upcomingEvent);
 
 app.listen(PORT, () => {
   console.log(`App is successfully running on port ${PORT}`);
