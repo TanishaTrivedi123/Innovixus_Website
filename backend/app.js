@@ -6,7 +6,13 @@ connectDB();
 dotenv.config();
 const cors = require("cors");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://innovixus-frontend.onrender.com", // replace with your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // ✅ Set size limits properly — and only use express built-ins
 app.use(express.json({ limit: "20mb" }));
