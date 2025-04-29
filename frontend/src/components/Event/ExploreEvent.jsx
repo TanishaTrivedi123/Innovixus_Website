@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import styles from "../Event/ExploreEvent.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteEvent } from "../../store/EventSlice";
+import { deleteEvent, getEvent } from "../../store/EventSlice";
 import { RxCross2 } from "react-icons/rx";
 import { FaCalendarAlt, FaMicrochip, FaCode } from "react-icons/fa";
-
+import axios from "axios";
 const ExploreEvent = () => {
   const { events } = useSelector((state) => state.event);
   const dispatch = useDispatch();
@@ -24,11 +24,39 @@ const ExploreEvent = () => {
       y: 30,
       duration: 0.4,
       ease: "power2.inOut",
-      onComplete: () => {
-        dispatch(deleteEvent(id));
+      onComplete: async () => {
+        try {
+          // Send DELETE request to the backend
+          const response = await axios.delete(
+            `http://localhost:8000/deleteEvent/${id}`
+          );
+
+          if (response.data.success) {
+            // Dispatch the delete action from Redux if the deletion was successful
+            dispatch(deleteEvent(id));
+          } else {
+            console.log("Event deletion failed:", response.data.message);
+          }
+        } catch (error) {
+          console.error("Error deleting event:", error);
+        }
       },
     });
   };
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/getEvent");
+        if (response.data.success) {
+          dispatch(getEvent(response.data.events));
+        }
+      } catch (error) {
+        console.error("Failed to fetch events:", error);
+      }
+    };
+
+    fetchEvents();
+  }, [dispatch]);
 
   useEffect(() => {
     gsap.from(eventHeadRef.current, {

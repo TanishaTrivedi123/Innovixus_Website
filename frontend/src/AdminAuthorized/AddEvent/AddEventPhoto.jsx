@@ -2,13 +2,12 @@ import React, { useRef, useState, useEffect } from "react";
 import styles from "../AddEvent/AddEventPhoto.module.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { addEvent } from "../../store/EventSlice";
+
 import { useNavigate } from "react-router-dom";
 
 const AddEventPhoto = () => {
   const imgRef = useRef();
-  const dispatch = useDispatch();
+
   const [image, setImage] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const navigate = useNavigate(); // ✅ FIXED here
@@ -72,9 +71,6 @@ const AddEventPhoto = () => {
 
       if (response.data.success) {
         toast.success("Successfully added on the page");
-
-        const savedEvent = response.data.event;
-        dispatch(addEvent(savedEvent));
 
         // ✅ Clear all inputs and preview
         titleRef.current.value = "";
