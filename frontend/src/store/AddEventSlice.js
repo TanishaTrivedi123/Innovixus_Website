@@ -1,10 +1,12 @@
 // src/store/AddEventSlice.js
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
   upcomingEvent: {
     title: "",
     description: "",
+    // optional: if you want to keep track of the ID
   },
 };
 

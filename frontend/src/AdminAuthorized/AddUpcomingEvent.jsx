@@ -1,17 +1,16 @@
 import React, { useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { setUpcomingEvent } from "../store/AddEventSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AddUpcomingEvent = () => {
   const titleRef = useRef();
   const desRef = useRef();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const title = titleRef.current.value.trim();
@@ -22,9 +21,28 @@ const AddUpcomingEvent = () => {
       return;
     }
 
-    dispatch(setUpcomingEvent({ title, description }));
-    titleRef.current.value = "";
-    desRef.current.value = "";
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/add-event-info",
+        {
+          title,
+          description,
+        }
+      );
+
+      if (response.data.success) {
+        toast.success("Event is successfully added");
+        titleRef.current.value = "";
+        desRef.current.value = "";
+
+        navigate("/");
+      } else {
+        toast.error("Failed to add event");
+      }
+    } catch (error) {
+      console.error("Error adding event:", error);
+      toast.error("Something went wrong. Please try again.");
+    }
 
     toast.success("🎉 Event successfully added!");
     navigate("/");

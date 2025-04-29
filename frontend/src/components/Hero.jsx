@@ -94,7 +94,7 @@ const Hero = () => {
           <div className="flex flex-row gap-6 sm:flex-row sm:gap-8 pt-11">
             <Link to="/events">
               <button className="hero-button transform rounded-full bg-purple-500 text-white px-8 py-3 text-lg font-semibold shadow-lg transition-transform duration-75 ease-in-out hover:scale-105 active:bg-purple-500 active:shadow-none border-2 border-transparent hover:border-purple-400 hover:bg-transparent focus:outline-2 focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 sm:px-10 hover:shadow-purple-200 hover:shadow-lg font-poppins">
-                Explore Events
+                View Events
               </button>
             </Link>
 
@@ -102,7 +102,7 @@ const Hero = () => {
               className="hero-button transform rounded-full bg-purple-500 text-white px-8 py-3 text-lg font-semibold shadow-lg transition-transform duration-200 ease-in-out hover:scale-105 active:bg-purple-500 active:shadow-none border-2 border-transparent hover:border-purple-400 hover:bg-transparent focus:outline-2 focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 sm:px-10 hover:shadow-purple-200 hover:shadow-lg font-poppins"
               onClick={handleOpenOnclick}
             >
-              Upcoming Events
+              Event Ahead
             </button>
           </div>
         </div>
