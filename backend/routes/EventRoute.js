@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const EventModel = require("../models/Event");
 const upload = require("../middleware/upload");
-const cloudinary = require("../config/cloudinary"); // make sure this path is correct
+const cloudinary = require("../Cloudinary");
 const fs = require("fs");
 
 router.post("/addevent", upload.single("image"), async (req, res) => {
