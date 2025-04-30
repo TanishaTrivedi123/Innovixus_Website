@@ -88,7 +88,7 @@ input[type="password"]::-ms-clear {
 /* For Tablets (Width <= 768px) */
 @media (max-width: 768px) {
   .icons {
-    right: 8%;
+    right: 7%;
     font-size: 1.3rem;
   }
 }
@@ -96,7 +96,7 @@ input[type="password"]::-ms-clear {
 /* For Mobile Devices (Width <= 480px) */
 @media (max-width: 480px) {
   .icons {
-    right: 5%;
+    right: 10%;
     font-size: 1.2rem;
   }
 

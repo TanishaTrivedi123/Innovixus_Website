@@ -105,24 +105,23 @@ const UpcomingEvent = ({ onClose }) => {
               : "Stay tuned for our upcoming tech event! It’s going to be packed with innovation, coding, and creativity."}
           </p>
 
-          {hasEvent ? (
-            <button
-              onClick={handleClickRegister}
-              className="bg-purple-600 hover:bg-transparent hover:border-purple-400 hover:text-purple-400 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300 border-2 border-transparent hover:shadow-purple-500/30 font-poppins"
-            >
-              Register
-            </button>
-          ) : (
-            isMobile &&
-            onClose && (
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
+            {hasEvent && (
               <button
-                onClick={onClose}
+                onClick={handleClickRegister}
                 className="bg-purple-600 hover:bg-transparent hover:border-purple-400 hover:text-purple-400 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300 border-2 border-transparent hover:shadow-purple-500/30 font-poppins"
               >
-                Close
+                Register
               </button>
-            )
-          )}
+            )}
+
+            <button
+              onClick={onClose}
+              className="bg-red-500 hover:bg-transparent hover:border-red-400 hover:text-red-400 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300 border-2 border-transparent hover:shadow-red-500/30 font-poppins"
+            >
+              Close
+            </button>
+          </div>
         </div>
       </motion.div>
     </div>

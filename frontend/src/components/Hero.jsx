@@ -106,45 +106,6 @@ const Hero = () => {
             </button>
           </div>
         </div>
-
-        {/* Render UpcomingEvent outside button group */}
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center"
-            >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 10,
-                  duration: 0.3,
-                }}
-                className="relative"
-              >
-                <UpcomingEvent onClose={() => setOpen(false)} />
-
-                <motion.button
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0, opacity: 0 }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                  onClick={() => setOpen(false)}
-                  className="absolute -top-3 -right-3 text-white bg-red-500 hover:bg-red-600 w-8 h-8 rounded-full font-semibold shadow-md flex items-center justify-center hidden sm:flex"
-                >
-                  X
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </>
   );
