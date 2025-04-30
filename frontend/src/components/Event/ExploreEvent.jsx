@@ -105,29 +105,12 @@ const ExploreEvent = () => {
 
         <div className={styles.container}>
           {events.length > 0 ? (
-            [...events].reverse().map((item, index) => (
+            [...events].map((item, index) => (
               <div
                 className={styles.card}
                 key={item._id}
                 ref={(el) => (cardsRef.current[index] = el)}
               >
-                {/* <div className={styles.card_glow}></div>
-                <div className={styles.img}>
-                  {item.image.url ? (
-                    <img
-                      src={`https://innovixus-backend.onrender.com/${item.image.replace(
-                        /\\/g,
-                        "/"
-                      )}`}
-                      alt="event"
-                    />
-                  ) : (
-                    <div className={styles.no_event_img}>
-                      {techIcons[index % techIcons.length]}
-                    </div>
-                  )}
-                </div> */}
-
                 <div className={styles.card_glow}></div>
                 <div className={styles.img}>
                   {item.image?.url ? (
