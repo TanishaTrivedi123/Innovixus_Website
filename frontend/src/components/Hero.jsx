@@ -137,8 +137,7 @@ const Hero = () => {
                   exit={{ scale: 0, opacity: 0 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                   onClick={() => setOpen(false)}
-                  // className="absolute -top-3 -right-3 text-white bg-red-500 hover:bg-red-600 w-8 h-8 rounded-full font-semibold shadow-md flex items-center justify-center"
-                  className="absolute top-2 right-2 sm:-top-3 sm:-right-3 text-white bg-red-500 hover:bg-red-600 w-8 h-8 rounded-full font-semibold shadow-md flex items-center justify-center"
+                  className="absolute -top-3 -right-3 text-white bg-red-500 hover:bg-red-600 w-8 h-8 rounded-full font-semibold shadow-md flex items-center justify-center hidden sm:flex"
                 >
                   X
                 </motion.button>

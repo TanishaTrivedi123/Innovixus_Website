@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -6,10 +6,18 @@ import { MdDelete } from "react-icons/md";
 import { deleteUpcomingEvent, setUpcomingEvent } from "../store/AddEventSlice";
 import axios from "axios";
 
-const UpcomingEvent = () => {
+const UpcomingEvent = ({ onClose }) => {
   const { upcomingEvent } = useSelector((state) => state.upcomingEvent);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 640);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const fetchEvent = async () => {
@@ -65,7 +73,7 @@ const UpcomingEvent = () => {
   const admin = localStorage.getItem("isAdmin") === "true";
 
   return (
-    <div className="relative top-0 right-0 flex items-center justify-center px-4 overflow-x-hidden">
+    <div className="relative top-0 right-0 flex items-center justify-center px-4">
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -75,8 +83,7 @@ const UpcomingEvent = () => {
           damping: 10,
           duration: 0.5,
         }}
-        // className="bg-gradient-to-br from-[#1f1f1f] to-[#2b2b2b] border border-purple-600 rounded-3xl p-8 sm:p-10 text-center shadow-2xl w-[90%] sm:w-[450px] relative"
-        className="bg-gradient-to-br from-[#1f1f1f] to-[#2b2b2b] border border-purple-600 rounded-3xl px-5 py-8 sm:px-8 sm:py-10 text-center shadow-2xl w-full max-w-md relative"
+        className="bg-gradient-to-br from-[#1f1f1f] to-[#2b2b2b] border border-purple-600 rounded-3xl p-8 sm:p-10 text-center shadow-2xl w-[90%] sm:w-[450px] relative"
       >
         <div className="relative top-0 right-0">
           {admin && hasEvent && upcomingEvent?._id && (
@@ -98,13 +105,23 @@ const UpcomingEvent = () => {
               : "Stay tuned for our upcoming tech event! It’s going to be packed with innovation, coding, and creativity."}
           </p>
 
-          {hasEvent && (
+          {hasEvent ? (
             <button
               onClick={handleClickRegister}
               className="bg-purple-600 hover:bg-transparent hover:border-purple-400 hover:text-purple-400 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300 border-2 border-transparent hover:shadow-purple-500/30 font-poppins"
             >
               Register
             </button>
+          ) : (
+            isMobile &&
+            onClose && (
+              <button
+                onClick={onClose}
+                className="bg-purple-600 hover:bg-transparent hover:border-purple-400 hover:text-purple-400 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition duration-300 border-2 border-transparent hover:shadow-purple-500/30 font-poppins"
+              >
+                Close
+              </button>
+            )
           )}
         </div>
       </motion.div>
