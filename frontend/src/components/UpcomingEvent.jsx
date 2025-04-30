@@ -65,7 +65,7 @@ const UpcomingEvent = () => {
   const admin = localStorage.getItem("isAdmin") === "true";
 
   return (
-    <div className="relative top-0 right-0 flex items-center justify-center px-4">
+    <div className="relative top-0 right-0 flex items-center justify-center px-4 overflow-x-hidden">
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -75,7 +75,8 @@ const UpcomingEvent = () => {
           damping: 10,
           duration: 0.5,
         }}
-        className="bg-gradient-to-br from-[#1f1f1f] to-[#2b2b2b] border border-purple-600 rounded-3xl p-8 sm:p-10 text-center shadow-2xl w-[90%] sm:w-[450px] relative"
+        // className="bg-gradient-to-br from-[#1f1f1f] to-[#2b2b2b] border border-purple-600 rounded-3xl p-8 sm:p-10 text-center shadow-2xl w-[90%] sm:w-[450px] relative"
+        className="bg-gradient-to-br from-[#1f1f1f] to-[#2b2b2b] border border-purple-600 rounded-3xl px-5 py-8 sm:px-8 sm:py-10 text-center shadow-2xl w-full max-w-md relative"
       >
         <div className="relative top-0 right-0">
           {admin && hasEvent && upcomingEvent?._id && (
