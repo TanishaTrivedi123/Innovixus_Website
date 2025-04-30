@@ -35,6 +35,17 @@ const App = () => {
     return () => clearTimeout(timeout);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const expireTime = localStorage.getItem("expireTime");
+    const currentTime = new Date().getTime();
+
+    // 👇 If expireTime missing or expired, clear isAdmin
+    if (!expireTime || currentTime > parseInt(expireTime)) {
+      localStorage.removeItem("isAdmin");
+      localStorage.removeItem("expireTime");
+    }
+  }, []);
+
   return (
     <>
       {loading && <Loader isAnimatingOut={isAnimatingOut} />}

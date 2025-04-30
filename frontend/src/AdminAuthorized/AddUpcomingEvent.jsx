@@ -56,6 +56,7 @@ const AddUpcomingEvent = () => {
     if (admin !== "true" || !expireTime || currentTime > parseInt(expireTime)) {
       localStorage.removeItem("isAdmin");
       localStorage.removeItem("expireTime");
+      toast.info("Session expired. Please log in again");
       navigate("/admin"); // 🔐 Redirect to login if expired
     }
   }, [navigate]);

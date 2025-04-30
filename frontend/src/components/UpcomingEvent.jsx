@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { deleteUpcomingEvent, setUpcomingEvent } from "../store/AddEventSlice";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const UpcomingEvent = ({ onClose }) => {
   const { upcomingEvent } = useSelector((state) => state.upcomingEvent);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isMobile, setIsMobile] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 640);
