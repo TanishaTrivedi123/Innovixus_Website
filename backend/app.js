@@ -6,15 +6,24 @@ connectDB();
 dotenv.config();
 const cors = require("cors");
 
+const allowedOrigins = process.env.CLIENT_URLS.split(",");
+
+// Set up CORS
 app.use(
   cors({
-    origin: "https://innovixus-frontend.onrender.com", // replace with your frontend URL
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
 
-// ✅ Set size limits properly — and only use express built-ins
+// Set size limits properly — and only use express built-ins
 app.use(express.json({ limit: "20mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
