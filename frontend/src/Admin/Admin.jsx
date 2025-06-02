@@ -3,6 +3,7 @@ import styles from "../Admin/Admin.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { API_URL } from "../utils/api";
 import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 
 const Admin = () => {
@@ -24,12 +25,9 @@ const Admin = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://innovixus-backend.onrender.com/verify-admin",
-        {
-          secretKey: secretKey,
-        }
-      );
+      const response = await axios.post(`${API_URL}/verify-admin`, {
+        secretKey: secretKey,
+      });
 
       if (response.data.success) {
         toast.success("Welcome to the authorized panel! 🚀");

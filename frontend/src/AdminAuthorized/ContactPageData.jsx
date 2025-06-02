@@ -9,6 +9,7 @@ import {
   FaSpinner,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../utils/api";
 
 const ContactPageData = () => {
   const [contactData, setContactData] = useState([]);
@@ -19,9 +20,7 @@ const ContactPageData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          "https://innovixus-backend.onrender.com/contact-data"
-        );
+        const res = await axios.get(`${API_URL}/contact-data`);
         setContactData(res.data);
         setLoading(false);
       } catch (err) {

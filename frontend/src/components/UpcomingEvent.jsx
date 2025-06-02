@@ -6,6 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { deleteUpcomingEvent, setUpcomingEvent } from "../store/AddEventSlice";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_URL } from "../utils/api";
 
 const UpcomingEvent = ({ onClose }) => {
   const { upcomingEvent } = useSelector((state) => state.upcomingEvent);
@@ -24,9 +25,7 @@ const UpcomingEvent = ({ onClose }) => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const response = await axios.get(
-          "https://innovixus-backend.onrender.com/get-event-info"
-        );
+        const response = await axios.get(`${API_URL}/get-event-info`);
         console.log("API response:", response.data);
 
         if (
@@ -57,7 +56,7 @@ const UpcomingEvent = ({ onClose }) => {
 
     try {
       const response = await axios.delete(
-        `https://innovixus-backend.onrender.com/deleteUpcomingEvent/${id}`
+        `${API_URL}/deleteUpcomingEvent/${id}`
       );
 
       if (response.data.success) {

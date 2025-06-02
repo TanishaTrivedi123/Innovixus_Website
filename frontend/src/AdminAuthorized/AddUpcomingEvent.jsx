@@ -3,6 +3,7 @@ import { setUpcomingEvent } from "../store/AddEventSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../utils/api";
 import axios from "axios";
 
 const AddUpcomingEvent = () => {
@@ -22,13 +23,10 @@ const AddUpcomingEvent = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://innovixus-backend.onrender.com/add-event-info",
-        {
-          title,
-          description,
-        }
-      );
+      const response = await axios.post(`${API_URL}/add-event-info`, {
+        title,
+        description,
+      });
 
       if (response.data.success) {
         toast.success("Event is successfully added");

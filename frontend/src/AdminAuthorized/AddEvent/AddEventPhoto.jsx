@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "../AddEvent/AddEventPhoto.module.css";
 import axios from "axios";
+import { API_URL } from "../../utils/api";
 import { toast } from "react-toastify";
 
 import { useNavigate } from "react-router-dom";
@@ -59,15 +60,11 @@ const AddEventPhoto = () => {
     formData.append("image", image);
 
     try {
-      const response = await axios.post(
-        "https://innovixus-backend.onrender.com/addevent",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(`${API_URL}/addevent`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (response.data.success) {
         toast.success("Successfully added on the page");
