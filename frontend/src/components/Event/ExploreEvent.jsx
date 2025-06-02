@@ -6,6 +6,7 @@ import { deleteEvent, getEvent } from "../../store/EventSlice";
 import { RxCross2 } from "react-icons/rx";
 import { FaCalendarAlt, FaMicrochip, FaCode } from "react-icons/fa";
 import axios from "axios";
+import { API_URL } from "../../utils/api";
 
 const ExploreEvent = () => {
   const { events } = useSelector((state) => state.event);
@@ -28,9 +29,7 @@ const ExploreEvent = () => {
       onComplete: async () => {
         try {
           // Send DELETE request to the backend
-          const response = await axios.delete(
-            `https://innovixus-backend.onrender.com/deleteEvent/${id}`
-          );
+          const response = await axios.delete(`${API_URL}/deleteEvent/${id}`);
 
           if (response.data.success) {
             // Dispatch the delete action from Redux if the deletion was successful
@@ -47,9 +46,7 @@ const ExploreEvent = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(
-          "https://innovixus-backend.onrender.com/getEvent"
-        );
+        const response = await axios.get(`${API_URL}/getEvent`);
         if (response.data.success) {
           dispatch(getEvent(response.data.events));
         }

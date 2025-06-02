@@ -1,4 +1,3 @@
-// ✅ Updated Navbar.jsx
 import React, { useRef, useState, useEffect } from "react";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
@@ -87,15 +86,15 @@ const Navbar = () => {
               <img
                 src="/circular_icon.png"
                 alt="Logo"
-                className="h-14 w-14 sm:h-16 sm:w-16 lg:h-18 lg:w-18 xl:h-20 xl:w-20"
+                className="h-16 w-16 sm:h-16 sm:w-16 lg:h-18 lg:w-18 xl:h-20 xl:w-20"
               />
-              <span className="ml-3 text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold hidden sm:block font-poppins">
+              <span className="ml-2 text-white text-2xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold block font-poppins">
                 Innovixus
               </span>
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <div
                 ref={desktopMenuRef}
                 className="ml-10 flex items-center space-x-4 lg:space-x-6 xl:space-x-8 font-inter font-semibold"
@@ -155,16 +154,16 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <div
               ref={mobileMenuButtonRef}
-              className="md:hidden flex items-center"
+              className="lg:hidden flex items-center pr-4 sm:pr-6"
             >
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="inline-flex items-center justify-center p-2 sm:p-3 rounded-md text-white focus:outline-none"
+                className="inline-flex items-center justify-center p-3 rounded-md text-white focus:outline-none"
               >
                 {isOpen ? (
-                  <IoMdClose className="block h-7 w-7 sm:h-8 sm:w-8" />
+                  <IoMdClose className="block h-9 w-9" /> // larger icon
                 ) : (
-                  <IoMdMenu className="block h-7 w-7 sm:h-8 sm:w-8" />
+                  <IoMdMenu className="block h-9 w-9" />
                 )}
               </button>
             </div>
@@ -174,16 +173,16 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div
           ref={mobileMenuRef}
-          className={`md:hidden font-inter font-semibold bg-very-dark-blue transition-all duration-300 ease-in-out ${
+          className={`lg:hidden font-inter font-semibold bg-very-dark-blue transition-all duration-300 ease-in-out ${
             isOpen ? "max-h-screen" : "max-h-0 overflow-hidden"
           }`}
         >
-          <div className="px-3 pt-3 pb-4 space-y-2 sm:px-4">
+          <div className="px-4 pt-4 pb-5 space-y-3 sm:px-5">
             <NavLink
               to="/"
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `block px-4 py-3 rounded-md text-xl font-medium w-full ${
+                `block px-5 py-4 rounded-md text-2xl font-semibold w-full ${
                   isActive ? "text-blue-500" : "text-white hover:text-cyan-200"
                 }`
               }
@@ -194,7 +193,7 @@ const Navbar = () => {
               to="/team-members"
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `block px-4 py-3 rounded-md text-xl font-medium w-full ${
+                `block px-5 py-4 rounded-md text-2xl font-semibold w-full ${
                   isActive ? "text-blue-500" : "text-white hover:text-cyan-200"
                 }`
               }
@@ -205,7 +204,7 @@ const Navbar = () => {
               to="/about"
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `block px-4 py-3 rounded-md text-xl font-medium w-full ${
+                `block px-5 py-4 rounded-md text-2xl font-semibold w-full ${
                   isActive ? "text-blue-500" : "text-white hover:text-cyan-200"
                 }`
               }
@@ -214,8 +213,9 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               to="/contact"
+              onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `block px-4 py-3 rounded-md text-xl font-medium w-full ${
+                `block px-5 py-4 rounded-md text-2xl font-semibold w-full ${
                   isActive ? "text-blue-500" : "text-white hover:text-cyan-200"
                 }`
               }

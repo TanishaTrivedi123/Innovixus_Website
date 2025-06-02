@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import HeroBackgroundDots from "../components/HeroBackgroundDots";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,38 +11,6 @@ const About = () => {
   const glassCards = useRef([]);
 
   useGSAP(() => {
-    // Background gradient animations
-    gsap.to(".gradient-circle-1", {
-      x: 50,
-      y: -30,
-      duration: 20,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-
-    gsap.to(".gradient-circle-2", {
-      x: -40,
-      y: 40,
-      duration: 25,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-
-    // Floating particles animation
-    gsap.to(".particle", {
-      y: 20,
-      duration: 10,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      stagger: {
-        amount: 3,
-        from: "random",
-      },
-    });
-
     // Heading animation
     gsap
       .timeline({
@@ -118,29 +87,7 @@ const About = () => {
       ref={container}
       className="relative overflow-x-hidden py-16 px-6 sm:px-12 lg:px-24 bg-gray-950 text-white"
     >
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0f172a] via-[#1e293b] to-[#0f172a] opacity-40" />
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="particle absolute rounded-full bg-white/5"
-            style={{
-              width: `${Math.random() * 5 + 2}px`,
-              height: `${Math.random() * 5 + 2}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.1,
-            }}
-          />
-        ))}
-
-        <div className="gradient-circle-1 absolute top-20 left-10 w-64 h-64 rounded-full bg-gradient-to-tr from-indigo-600/30 to-blue-500/30 mix-blend-screen blur-[100px]" />
-        <div className="gradient-circle-2 absolute bottom-10 right-10 w-72 h-72 rounded-full bg-gradient-to-br from-violet-600/30 to-purple-500/30 mix-blend-screen blur-[100px]" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-15 pointer-events-none" />
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-500/5 to-transparent pointer-events-none" />
-      </div>
+      <HeroBackgroundDots />
 
       <div className="mt-11 relative z-10 max-w-7xl mx-auto">
         {/* Enhanced Heading */}

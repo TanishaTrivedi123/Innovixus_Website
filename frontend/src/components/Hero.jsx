@@ -4,6 +4,7 @@ import gsap from "gsap";
 import UpcomingEvent from "./UpcomingEvent";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import HeroBackgroundDots from "./HeroBackgroundDots";
 
 const Hero = () => {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,6 @@ const Hero = () => {
   };
 
   useGSAP(() => {
-    // Animations
     gsap.from(".hero-main-title", {
       y: 50,
       opacity: 0,
@@ -59,26 +59,59 @@ const Hero = () => {
   return (
     <>
       <div className="font-sans top-0 left-0 w-full h-screen overflow-hidden -z-10">
-        {/* Background Image */}
         <div className="absolute inset-0 bg-[url('/src/assets/Background2.png')] bg-cover bg-center bg-no-repeat">
+          <HeroBackgroundDots />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
-        {/* Content Container */}
         <div className="relative h-full flex flex-col items-center justify-center px-4 text-white pt-16">
           {/* Main Title */}
-          <h1 className="text-center mb-8 px-4">
-            <span className="hero-main-title block text-2xl font-bold sm:text-3xl md:text-2xl lg:text-5xl xl:text-6xl 2xl:text-7xl bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent font-poppins">
+          <h1 className="text-center px-4 mb-10 sm:mb-12 md:mb-20">
+            <span
+              className="
+              hero-main-title block
+              text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl
+              font-bold
+              bg-gradient-to-r from-blue-400 to-purple-600
+              bg-clip-text text-transparent
+              font-poppins
+              "
+              style={{ letterSpacing: "0.04em" }}
+            >
               Your Tech Journey Starts Here
             </span>
 
-            <span className="hero-sub-line block mt-2 sm:mt-8 md:mt-7 text-lg sm:text-2xl md:text-xs lg:text-3xl xl:text-4xl font-medium text-gray-300 animate-pulse font-inter">
+            <span
+              className="
+              hero-sub-line block
+              mt-5 sm:mt-7 md:mt-10
+              text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl
+              font-medium
+              text-gray-300
+              animate-pulse
+              font-inter
+              "
+              style={{ letterSpacing: "0.03em" }}
+            >
               - Are You Ready? -
             </span>
           </h1>
 
-          {/* Sub Title */}
-          <h2 className="hero-subtitle mb-8 text-lg font-medium sm:text-xl md:text-base lg:text-3xl text-center text-gray-300 max-w-3xl mx-auto px-4 leading-relaxed font-inter">
+          <h2
+            className="
+            hero-subtitle
+            mb-10 sm:mb-12 md:mb-20
+            text-lg sm:text-xl md:text-2xl lg:text-2xl
+            text-center
+            text-gray-300
+            max-w-3xl
+            mx-auto
+            px-4
+            leading-relaxed
+            font-inter
+            "
+            style={{ letterSpacing: "0.02em" }}
+          >
             <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-semibold hover:from-blue-500 hover:to-purple-600 transition-all duration-300">
               Join a community
             </span>{" "}
@@ -91,7 +124,7 @@ const Hero = () => {
           </h2>
 
           {/* Button Group */}
-          <div className="flex flex-row gap-6 sm:flex-row sm:gap-8 pt-11">
+          <div className="flex flex-row gap-8 sm:flex-row sm:gap-10 pt-14">
             <Link to="/events">
               <button className="hero-button transform rounded-full bg-purple-500 text-white px-8 py-3 text-lg font-semibold shadow-lg transition-transform duration-75 ease-in-out hover:scale-105 active:bg-purple-500 active:shadow-none border-2 border-transparent hover:border-purple-400 hover:bg-transparent focus:outline-2 focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 sm:px-10 hover:shadow-purple-200 hover:shadow-lg font-poppins">
                 View Events
@@ -108,7 +141,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Render UpcomingEvent Popup */}
       <AnimatePresence>
         {open && (
           <motion.div
