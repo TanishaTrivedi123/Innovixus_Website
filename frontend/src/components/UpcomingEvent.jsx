@@ -35,6 +35,9 @@ const UpcomingEvent = ({ onClose }) => {
         ) {
           const firstEvent = response.data.eventData[0];
           dispatch(setUpcomingEvent(firstEvent));
+        } else {
+          // 🔥 Clear the Redux event if no event is present
+          dispatch(deleteUpcomingEvent());
         }
       } catch (error) {
         console.error("Failed to fetch events", error);
