@@ -46,6 +46,21 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Disable right-click
+    const handleContextMenu = (event) => {
+      event.preventDefault(); // Prevent right-click menu
+    };
+
+    // Attach event listener when the component mounts
+    document.addEventListener("contextmenu", handleContextMenu);
+
+    // Cleanup on unmount
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+  }, []);
+
   return (
     <>
       {loading && <Loader isAnimatingOut={isAnimatingOut} />}
