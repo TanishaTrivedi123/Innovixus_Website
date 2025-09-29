@@ -14,9 +14,6 @@ body {
   box-sizing: border-box;
   font-family: "Gilroy", sans-serif;
   user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   -webkit-user-drag: none;
 }
 
@@ -40,10 +37,4 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-thumb:active {
   background-color: #555555;
-}
-
-img {
-  -webkit-user-drag: none;
-  user-select: none;
-  pointer-events: none; /* Optional, agar clickable nahi hai */
 }

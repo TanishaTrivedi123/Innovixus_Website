@@ -19,6 +19,7 @@ import EnterPage from "./AdminAuthorized/EnterPage";
 import AddEventPhoto from "./AdminAuthorized/AddEvent/AddEventPhoto";
 import ContactPageData from "./AdminAuthorized/ContactPageData";
 import RegistrationForm from "./components/RegistrationForm";
+import NotFound from "./NotFound";
 
 const App = () => {
   const navigate = useNavigate();
@@ -46,21 +47,6 @@ const App = () => {
     }
   }, []);
 
-  useEffect(() => {
-    // Disable right-click
-    const handleContextMenu = (event) => {
-      event.preventDefault(); // Prevent right-click menu
-    };
-
-    // Attach event listener when the component mounts
-    document.addEventListener("contextmenu", handleContextMenu);
-
-    // Cleanup on unmount
-    return () => {
-      document.removeEventListener("contextmenu", handleContextMenu);
-    };
-  }, []);
-
   return (
     <>
       {loading && <Loader isAnimatingOut={isAnimatingOut} />}
@@ -75,6 +61,7 @@ const App = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/upcoming" element={<UpcomingEvent />} />
             <Route path="/registration-form" element={<RegistrationForm />} />
+            <Route path="*" element={<NotFound />} />
 
             {/* this the backend admin part which i set here ok */}
             <Route path="/admin" element={<Admin />} />
