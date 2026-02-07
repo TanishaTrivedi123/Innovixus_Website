@@ -117,7 +117,7 @@ The platform allows users to explore events and contact the club, while admins c
 
 ## 👨‍💻 Developer
 
-**Ansh Pandey**  
+**Tanisha Trivedi**  
 Full-Stack Developer (MERN)  
 📌 Focused on building scalable & real-world web applications  
 
